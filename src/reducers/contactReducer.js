@@ -1,3 +1,5 @@
+import Contact from "../components/contacts/Contact";
+
 const initialState = {
   
         contacts: [
@@ -36,6 +38,11 @@ export default  function(state= initialState, action){
         case 'GET_CONTACTS':
             return{
                 ...state
+            }
+        case 'DELETE_CONTACT':
+            return{
+                ...state,
+                contacts: state.contacts.filter(Contact=>Contact.id !== action.payload)
             }
         
         default:
