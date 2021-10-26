@@ -1,4 +1,6 @@
 import Axios from "axios";
+import Contact from "../components/contacts/Contact";
+import Contacts from "../components/contacts/Contacts";
 
 export   const   getContacts = () => async dispatch =>{
 
@@ -15,9 +17,14 @@ export const deleteContact = (id)=>{
         payload: id
     }
 }
-export const addContact = (contact)=>{
-    return{
+export const addContact = (contact)=> async dispatch=>{
+
+    const res = await Axios.post('https://jsonplaceholder.typicode.com/users',contact);
+    
+    
+    dispatch({
         type:'ADD_CONTACT',
-        payload:contact
-    }
+        payload:res.data,
+        
+    })
 }
