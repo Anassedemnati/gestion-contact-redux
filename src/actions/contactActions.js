@@ -10,6 +10,17 @@ export   const   getContacts = () => async dispatch =>{
         payload:res.data
     });
 }
+export   const   getContact = (id) => async dispatch =>{
+
+    const res= await Axios.get("https://jsonplaceholder.typicode.com/users/"+id);
+   
+    dispatch({
+           type:'GET_CONTACT',
+           payload:res.data
+       });
+   }
+   
+
 export const deleteContact = (id)=> dispatch=>{
     Axios.delete(`https://jsonplaceholder.typicode.com/users/${id}`)
     dispatch({
