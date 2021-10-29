@@ -1,6 +1,5 @@
 import Axios from "axios";
-import Contact from "../components/contacts/Contact";
-import Contacts from "../components/contacts/Contacts";
+
 
 export   const   getContacts = () => async dispatch =>{
 
@@ -11,11 +10,12 @@ export   const   getContacts = () => async dispatch =>{
         payload:res.data
     });
 }
-export const deleteContact = (id)=>{
-    return{
+export const deleteContact = (id)=> dispatch=>{
+    Axios.delete(`https://jsonplaceholder.typicode.com/users/${id}`)
+    dispatch({
         type:'DELETE_CONTACT',
         payload: id
-    }
+    })
 }
 export const addContact = (contact)=> async dispatch=>{
 
